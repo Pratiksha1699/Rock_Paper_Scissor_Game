@@ -1,0 +1,859 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  
+<meta charset="UTF-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<!-- displays site properly based on user's device -->
+
+  
+<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/
+css?family=Georama|Merriweather+Sans">
+<title>Frontend Mentor | Rock, Paper, Scissors</title>
+
+  
+<style>
+    
+.attribution { font-size: 11px; text-align: center; }
+    
+.attribution a { color: hsl(228, 45%, 44%); }
+  
+.modal{
+	display:none;
+	position:absolute;
+	z-index:7;
+	left:39%;
+	top:25%;
+	width:22%;
+	overflow:auto;
+	background-color:rgba(255,255,255,1);
+	color:black;
+}
+#idz{		display:none;
+		position:fixed;
+		z-index:7;
+		margin-top:0px;
+		left:0;
+		top:0;
+		width:100%;
+		height:100%;
+		overflow:auto;
+		background-color:rgb(0,0,0);
+		background-color:rgba(0,0,0,0.5);
+}
+#id1{
+	padding:2%;
+	border-radius:10px 10px 10px 10px;
+	font-size:20px;
+	font-family:Merriweather Sans;
+	font-weight:900;
+	color:rgb(27,43,76);
+}
+#s2{
+	display:none;
+	margin-top:5%;
+}
+.fi{
+	border-radius:15px 15px 15px 15px;
+	border:3px solid rgb(91,137,133);
+	width:45%;
+	margin-left:25%;
+	padding:20px;
+	margin-top:3%;
+}
+#scorebox{
+	float:right;
+	text-align:center;
+	background-color:white;
+	border-radius:10px 10px 10px 10px;
+	padding:3%;
+	padding-left:4%;
+	padding-right:4%;
+	font-weight:bold;
+	font-family:sans-serif;
+}
+#scoretxt{
+	color:rgb(76,94,194);
+	font-size:15px;
+}
+#sco{
+	color:rgb(81,77,100);
+	font-size:40px;
+}
+#s1{
+	//background:url('images/bg-triangle.svg');
+	//background-repeat:no-repeat;
+	//background-position:center;
+	margin-top:8%;
+	width:40%;
+	height:300px;
+}
+.circle{
+	width:100px;
+	height:100px;
+	padding:10px;
+	
+}
+#bluec{
+	border-radius:50%;
+	background-color:rgb(224,224,224);
+	border:20px solid rgb(86,112,248);
+	float:left;
+	margin-left:10%;
+	margin-top:-45px;
+	box-shadow:0px 7px rgb(42,70,195),rgb(186,191,213) 0px 7px inset;
+	padding-top:4%;
+}
+#yellowc{
+	border-radius:50%;
+	background-color:rgb(222,222,222);
+	border:20px solid rgb(237,167,37);
+	float:right;
+	margin-top:-45px;
+	margin-right:10%;
+	box-shadow:0px 7px rgb(196,112,26),rgb(185,190,210) 0px 7px inset;	
+	padding-top:4%;
+}
+#redc{
+	border-radius:50%;
+	background-color:rgb(223,223,223);
+	border:20px solid rgb(223,60,87);
+	float:left;
+	margin-left:35%;
+	margin-top:10px;
+	box-shadow:0px 7px rgb(159,22,52),rgb(186,193,211) 0px 7px inset;
+	padding-top:4%;
+}
+#trimg{
+	margin-left:-150px;
+}
+#button1{
+	position:fixed;
+	background-color:rgb(27,43,76);
+	color:white;
+	border:1px solid white;
+	border-radius:10px 10px 10px 10px;
+	padding:10px;
+	width:8%;
+	margin-right:2%;
+	right:0;
+	bottom:2%;
+}
+#s21{
+	border-radius:50%;
+	background-color:rgb(222,222,222);
+	z-index:2;
+	border:20px solid rgb(237,167,37);
+	width:180px;
+	height:180px;
+	padding:10px;
+	box-shadow:0px 7px rgb(42,70,195);
+	float:left;
+}
+#s22{
+	border-radius:50%;
+	background-color:rgb(24,35,65);
+	z-index:2;
+	border:20px solid rgb(237,167,37);
+	width:180px;
+	height:180px;
+	padding:10px;
+	float:left;
+	margin-top:50px;
+}
+#s2a1{
+	width:320px;
+	height:320px;
+	border-radius:50%;
+	z-index:2;
+	display:inline-block;
+	position:relative;
+	color:white;
+	font-size:15px;
+	font-weight:900;
+	font-family:Georama;
+	letter-spacing:3px;
+	left:10%;
+}
+#s2b1{
+	width:300px;
+	height:300px;
+	z-index:2;
+}
+#s2c1{
+	width:280px;
+	height:280px;
+	z-index:2;
+}
+#s2a2{
+	width:320px;
+	height:320px;
+	border-radius:50%;
+	z-index:2;
+	display:inline-block;
+	position:relative;
+	color:white;
+	font-size:15px;
+	font-weight:900;
+	font-family:Georama;
+	letter-spacing:3px;
+	
+	right:10%;
+}
+#s2b2{
+	width:300px;
+	height:300px;
+	z-index:2;
+}
+#s2c2{
+	width:280px;
+	height:280px;
+	z-index:2;
+}
+.shifter{
+	animation:shift 1s 3s forwards;
+}
+.shifter2{
+	animation:shift1 1s 3s forwards;
+}
+}
+#p1{
+	margin-bottom:15%;
+}
+
+#btn1{
+	color:rgb(27,43,76);
+}
+#btn1:hover{
+	cursor:pointer;
+	color:red;
+}
+.loader{
+	animation:load 2s;
+}
+@keyframes load{
+	0%{
+		border:none;
+		background-color:rgb(60,66,98);
+		box-shadow:none;
+		margin-top:25%;
+		margin-left:15%;
+	}
+	100%{
+		border:none;
+		background-color:rgb(60,66,98);
+		box-shadow:none;
+		margin-top:25%;
+		margin-left:15%;
+	}
+}
+@keyframes shift{
+	0%{
+		left:10%;
+	}
+	100%{
+		left:0%;
+	}
+}
+@keyframes shift1{
+	0%{
+		right:10%;
+	}
+	100%{
+		right:0%;
+	}
+}
+miv{
+	height:22vh;
+	width:22vh;
+	top:35%;
+	left:25%;
+	background-color:#FFFFFF99;
+	position:absolute;
+	pointer-events:none;
+	animation: like 1s 3s linear forwards;
+	opacity:0;
+	border-radius:50%;
+	float:left;
+	z-index:-1;
+}
+niv{
+	height:50%;
+	width:50%;
+	top:25%;
+	left:25%;
+	background-color:#FFFFFF99;
+	position:absolute;
+	pointer-events:none;
+	animation: like 1s 3s linear forwards;
+	opacity:0;
+	border-radius:50%;
+	float:left;
+	z-index:-1;
+}
+piv{
+	height:50%;
+	width:50%;
+	top:25%;
+	left:25%;
+	background-color:#FFFFFF99;
+	position:absolute;
+	pointer-events:none;
+	animation: like 1s 3s linear forwards;
+	opacity:0;
+	border-radius:50%;
+	float:left;
+	z-index:-1;
+}
+@keyframes like{
+	100%{
+		transform:scale(2.5);
+		opacity:0.5;
+	}
+}
+#mid{
+	animation:box1 1s 4s linear forwards;
+	display:inline-block;
+	visibility:hidden;
+}
+.sco1{
+	animation:box1 2s 4s linear forwards;
+}
+@keyframes box1{
+	0%{
+		visibility:hiddden;
+	}
+	100%{
+		visibility:visible;
+	}
+}
+
+@media screen and (max-width:425px){
+	.fi{
+		border-radius:5px 5px 5px 5px;
+		width:80%;
+		margin-left:5%;
+		border:2px solid rgb(91,137,133);
+	}
+	#logo{
+		width:25%;
+	}
+	#scorebox{
+		margin-top:-10px;
+		width:30%;
+		padding:0;
+	}
+	#scoretxt{
+		font-size:50%;
+	}
+	#s1{
+		width:180px;
+		//height:290px;
+	}
+	.circle{
+		width:70px;
+		height:70px;
+		padding:5px;
+	}
+	#bluec{
+		border:15px solid rgb(86,112,248);
+		margin-left:-25%;
+		margin-top:20%;
+	}
+	#yellowc{
+		border:15px solid rgb(237,167,37);
+		margin-top:30px;
+		margin-right:-20%;
+	}
+	#redc{
+		border:15px solid rgb(223,60,87);
+		margin-top:10%;
+		margin-left:18%;
+	}
+	.circle > img{
+		width:50%;
+		margin:0 auto;
+		top:10%;
+		position:relative;
+	}
+	#trimg{
+		width:180px;
+		margin-left:-100px;
+		top:40%;
+	}
+	#button1{
+		width:30%;
+		margin-right:35%;
+	}
+	.modal{
+		left:10%;
+		top:15%;
+		width:80%;
+	}
+	#closebtn{
+		bottom:2%;
+    		position:absolute;
+    		left:45%;
+	}
+	#idz{
+		background-color:rgba(255,255,255,1);
+	}
+	#id1{
+		height:70%;
+		text-align:center;
+	}
+	#rule{
+		margin-top:30%;
+	}
+		
+	#s21{
+		width:70px;
+		height:70px;
+		border-width:10px;
+	}
+	#s22{
+		width:70px;
+		height:70px;
+		border-width:10px;
+		margin-top:0px;
+	}
+	#s2{
+		margin-top:25%;
+	}
+
+	#s2a1{
+		width:auto;
+		height:auto;
+		left:-30%;
+		
+	}
+	#s2b1{
+		width:auto;
+		height:auto;
+	}
+	#s2c1{
+		width:auto;
+		height:auto;
+	}
+	#s2a2{
+		width:auto;
+		height:auto;
+		right:-30%;
+		margin-top:-60%;
+    		top: -18px;
+	}
+	#s2b2{
+		width:auto;
+		height:auto;	
+	}
+	#s2c2{
+		width:auto;
+		height:auto;
+	}
+	#p1{
+		position:absolute;
+    		top:120%;
+    		font-size:50%;
+		width:105%;
+	}
+	miv{
+		height:10vh;
+		width:10vh;
+		top:25%;
+		left:25%;
+		background-color:#FFFFFF99;
+		position:absolute;
+		animation: like 1s 3s linear forwards;
+		opacity:0;
+		border-radius:50%;
+		float:left;
+		z-index:-1;
+	}
+	niv{
+		height:50%;
+		width:50%;
+		top:25%;
+		left:25%;
+		background-color:#FFFFFF99;
+		position:absolute;
+		animation: like 1s 3s linear forwards;
+		opacity:0;
+		border-radius:50%;
+		float:left;
+		z-index:-1;
+	}
+	piv{
+		height:50%;
+		width:50%;
+		top:25%;
+		left:25%;
+		background-color:#FFFFFF99;
+		position:absolute;
+		animation: like 1s 3s linear forwards;
+		opacity:0;
+		border-radius:50%;
+		float:left;
+		z-index:-1;
+	}
+	#mid{
+		display:block;
+	}	
+	@keyframes load{
+	0%{
+		border:none;
+		background-color:rgb(60,66,98);
+		box-shadow:none;
+		margin-top:25%;
+	}
+	100%{
+		border:none;
+		background-color:rgb(60,66,98);
+		box-shadow:none;
+		margin-top:25%;
+	}
+}
+	
+
+}
+
+</style>
+
+</head>
+
+
+<body style="background-color:rgb(27,43,76);">
+
+
+  
+  
+
+
+<div class="fi">
+<img id="logo" src="images/logo.svg">
+<div id="scorebox"><span id="scoretxt">SCORE</span><br><span id="sco" onchange="scoreup">0</span></div>
+</div>
+<div>
+<center>
+<div id="s1">
+	<center><img id="trimg" src="images/bg-triangle.svg" style="position:absolute;z-index:-1;"></center>
+	<div class="circle" id="bluec" onclick="step2(1)"><img src="images/icon-paper.svg" style="margin-top:5%;"></div>
+	<div class="circle" id="yellowc" onclick="step2(2)"><img src="images/icon-scissors.svg" style="margin-top:5%;"></div>
+	<div class="circle" id="redc" onclick="step2(3)"><img src="images/icon-rock.svg" style="margin-top:5%;"></div>
+
+
+</div>
+</center>
+
+
+<div id="s2">
+	<center id="cent">
+	<div id="s2a1"><div id="p1">YOU PICKED</div>
+		<div id="s2b1">
+			<div id="s2c1">
+				<div id="s21"><img id="s2img" src="images/icon-paper.svg" style="margin-top:15%;width:50%;heigth:50%;z-index:2;">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="s2a2"><div id="p1">THE HOUSE PICKED</div>
+		<div id="s2b2">
+			<div id="s2c2">
+				<div id="s22"><img id="s2img2" src="images/icon-paper.svg" style="margin-top:15%;width:50%;heigth:50%;z-index:2;">
+				</div>
+			</div>
+		</div>
+	</div>
+	</center>
+</div>
+
+<button id="button1" onclick="document.getElementById('idz').style.display='block';document.getElementById('id1').style.display='block'">RULES</button>
+<div id="idz">
+				<div id="id1" class="modal animate">RULES
+				<span id="closebtn" onclick="document.getElementById('id1').style.display='none';document.getElementById('idz').style.display='none';" title="Close" style="float:right;"><img src="images/icon-close.svg"></span>
+				<div id="rule"><img src="images/image-rules.svg" style="width:90%;"></div>
+			</div>
+		</div>
+</div>
+
+<script>
+	
+
+	function step2(num){
+		document.getElementById('s1').style.display='none';
+		document.getElementById('s2').style.display='block';
+		if(num==1){
+			pick1 = document.getElementById('s21');
+			pick2 = document.getElementById('s22');
+			pick1.style.backgroundColor="rgb(224,224,224)";
+			pick1.style.border="30px solid rgb(86,112,248)";
+			pick1.style.boxShadow="0px 7px rgb(42,70,195),rgb(186,191,213) 0px 7px inset";
+			pick1.style.marginTop = "10%";
+			s2a1.classList.add("shifter");
+			s2a2.classList.add("shifter2");
+			if(screen.width<=425){
+				pick1.style.border="10px solid rgb(86,112,248)";
+				pick1.style.boxShadow="0px 3px rgb(42,70,195),rgb(186,191,213) 0px 3px inset";
+				pick1.style.marginTop = "0%";
+				s2a1.classList.remove("shifter");
+				s2a2.classList.remove("shifter2");
+				
+			}
+			document.getElementById('s2img').src="images/icon-paper.svg";
+			document.getElementById('s2img2').src="";
+			s22.classList.add("loader");
+			step3(1);
+			
+		}
+		if(num==2){
+			pick1 = document.getElementById('s21');
+			pick2 = document.getElementById('s22');
+			pick1.style.backgroundColor="rgb(222,222,222)";
+			pick1.style.border="30px solid rgb(237,167,37)";
+			pick1.style.boxShadow="0px 7px rgb(196,112,26),rgb(185,190,210) 0px 7px inset";
+			pick1.style.marginTop = "10%";
+			s2a1.classList.add("shifter");
+			s2a2.classList.add("shifter2");
+			if(screen.width<=425){
+				pick1.style.border="10px solid rgb(237,167,37)";
+				pick1.style.boxShadow="0px 3px rgb(196,112,26),rgb(185,190,210) 0px 3px inset";
+				pick1.style.marginTop = "0%";
+			
+				s2a1.classList.remove("shifter");
+				s2a2.classList.remove("shifter2");
+				
+			}
+			document.getElementById('s2img').src="images/icon-scissors.svg";
+			document.getElementById('s2img2').src="";
+			s22.classList.add("loader");
+			step3(2);
+		}
+		if(num==3){
+			pick1 = document.getElementById('s21');
+			pick2 = document.getElementById('s22');
+			pick1.style.backgroundColor="rgb(223,223,223)";
+			pick1.style.border="30px solid rgb(223,60,87)";
+			pick1.style.boxShadow="0px 7px rgb(159,22,52),rgb(186,193,211) 0px 7px inset";
+			pick1.style.marginTop = "10%";
+			s2a1.classList.add("shifter");
+			s2a2.classList.add("shifter2");
+			if(screen.width<=425){
+				pick1.style.border="10px solid rgb(223,60,87)";
+				pick1.style.boxShadow="0px 3px rgb(159,22,52),rgb(186,193,211) 0px 3px inset";
+				pick1.style.marginTop = "0%";
+				s2a1.classList.remove("shifter");
+				s2a2.classList.remove("shifter2");
+			}
+			document.getElementById('s2img').src="images/icon-rock.svg";
+			document.getElementById('s2img2').src="";
+			s22.classList.add("loader");
+			step3(3);
+		}
+	}
+
+
+	
+	function step3(n){
+		pick2 = document.getElementById('s22');
+		arr = ['paper','scissor','rock'];
+		const housepick = arr[Math.floor(Math.random() * arr.length)];
+		var num = n;
+		if(housepick=='paper'){
+			pick2 = document.getElementById('s22');
+			pick2.style.backgroundColor="rgb(224,224,224)";
+			pick2.style.border="30px solid rgb(86,112,248)";
+			pick2.style.boxShadow="0px 7px rgb(42,70,195),rgb(186,191,213) 0px 7px inset";
+			pick2.style.marginTop="10%";
+			if(screen.width<=425){
+				pick2.style.border="10px solid rgb(86,112,248)";
+				pick2.style.boxShadow="0px 3px rgb(42,70,195),rgb(186,191,213) 0px 3px inset";
+				pick2.style.marginTop="0%";
+			}
+			document.getElementById('s2img2').src="images/icon-paper.svg";
+			step4(housepick,num);
+  				
+		}
+		if(housepick=='scissor'){
+			pick2 = document.getElementById('s22');
+			pick2.style.backgroundColor="rgb(222,222,222)";
+			pick2.style.border="30px solid rgb(237,167,37)";
+			pick2.style.boxShadow="0px 7px rgb(196,112,26),rgb(185,190,210) 0px 7px inset";
+			pick2.style.marginTop="10%";
+			if(screen.width<=425){
+				pick2.style.border="10px solid rgb(237,167,37)";
+				pick2.style.boxShadow="0px 3px rgb(196,112,26),rgb(185,190,210) 0px 3px inset";
+				pick2.style.marginTop="0%";
+			}
+			document.getElementById('s2img2').src="images/icon-scissors.svg";
+			step4(housepick,num);	
+		}
+		if(housepick=='rock'){
+			pick2 = document.getElementById('s22');
+			pick2.style.backgroundColor="rgb(223,223,223)";
+			pick2.style.border="30px solid rgb(223,60,87)";
+			pick2.style.boxShadow="0px 7px rgb(159,22,52),rgb(186,193,211) 0px 7px inset";
+			pick2.style.marginTop="10%";
+			if(screen.width<=425){
+				pick2.style.border="10px solid rgb(223,60,87)";
+				pick2.style.boxShadow="0px 3px rgb(159,22,52),rgb(186,193,211) 0px 3px inset";
+				pick2.style.marginTop="0%";
+			}
+			document.getElementById('s2img2').src="images/icon-rock.svg";
+			step4(housepick,num);
+		}
+	}
+	function step4(housepick,num){
+		if((housepick=='paper' && num==2) || (housepick=='scissor' && num>2) || (housepick=='rock' && num==1)){
+			var txt = "YOU WIN";
+		}
+		else if((housepick=='paper' && num==1) || (housepick=='scissor' && num==2) || (housepick=='rock' && num==3)){
+			var txt = "IT'S A DRAW";
+		}
+		else{
+			var txt = "YOU LOSE"
+		}
+		//alert(txt);
+		let te = document.createElement("t");
+		te.innerHTML = txt;
+		te.style.color = "white";
+		te.style.fontWeight = "bolder";
+		te.style.fontSize = "2rem";
+		te.style.display = "inline-block";
+		te.style.width = "100%";
+		te.style.fontFamily = "Georama";
+		te.style.paddingBottom = "12px";
+		
+		var btn = document.createElement("BUTTON");
+		btn.innerHTML = "PLAY AGAIN";
+		//btn.style.color = "rgb(27,43,76)";
+		btn.style.backgroundColor = "white";
+		btn.style.textDecoration = "none";
+		btn.style.border = "none";
+		btn.style.padding = "12px";
+		btn.style.borderRadius = "5px";
+		btn.style.display = "inline-block";
+		btn.style.width = "70%";
+		btn.style.height = "35px";
+		btn.style.fontFamily = "Georama";
+		if(screen.width<=425){
+			btn.style.width = "90%";
+		}
+
+		btn.setAttribute('id','btn1');
+
+		
+		var bre = document.createElement("BR");
+
+
+		var dd = document.getElementById('s21');
+		let nn = document.createElement("miv");
+		let mm = document.createElement("niv");
+		let pp = document.createElement("piv");
+
+		nn.setAttribute('id','nn1');
+
+		var middiv = document.createElement("DIV");
+		//middiv.style.display = "inline-block";
+		middiv.style.width = "20%";
+		middiv.appendChild(te);
+		middiv.appendChild(bre);
+		middiv.appendChild(btn);
+		middiv.style.position = "fixed";
+		middiv.style.left = "40%";
+		middiv.style.marginTop = "5%";
+		middiv.style.zIndex = "5";
+		middiv.setAttribute('id','mid');
+		if(screen.width<=425){
+			middiv.style.width = "50%";
+			middiv.style.marginTop = "15%";
+			//middiv.style.display = "block";
+			middiv.style.left = "25%";
+		}
+
+		var middivcpy = document.createElement("DIV1");
+		middivcpy.style.display = "inline-block";
+		if(screen.width<=425){
+			middivcpy.style.display = "block";
+		}
+		middivcpy.style.visibility = "hidden";
+		middivcpy.style.width = "20%";
+		middivcpy.setAttribute('id','midcpy');
+
+		if(txt == 'YOU WIN'){
+			
+			dd.appendChild(nn);
+			nn.appendChild(mm);
+			mm.appendChild(pp);
+			var score = document.getElementById('sco').textContent;
+			score = parseInt(score) + 1;
+			var sc = document.getElementById('sco');
+
+			/*To change the value of score after the txt is 'WIN'*/
+			
+
+			const target = document.getElementById('s2a2');
+			target.parentNode.insertBefore(middivcpy, target);
+			target.parentNode.insertBefore(middiv, target);
+			
+			setTimeout(function(){ document.getElementById('sco').innerHTML = score;},4000); 
+			btn.onclick = function () {
+  				document.getElementById('s1').style.display='block';
+				var myobj = document.getElementById("mid");
+				myobj.remove();
+				var myobj1 = document.getElementById("midcpy");
+				myobj1.remove();
+				var myobj2 = document.getElementById("nn1");
+				myobj2.remove();
+				document.getElementById('s2').style.display='none';
+			};
+		}
+		else if(txt == 'YOU LOSE'){
+			var dd = document.getElementById('s22');
+			
+			dd.appendChild(nn);
+			nn.appendChild(mm);
+			mm.appendChild(pp);
+			
+			const target = document.getElementById('s2a2');
+			target.parentNode.insertBefore(middivcpy, target);
+			target.parentNode.insertBefore(middiv, target);
+			btn.onclick = function () {
+  				document.getElementById('s1').style.display='block';
+				var myobj = document.getElementById("mid");
+				myobj.remove();
+				var myobj1 = document.getElementById("midcpy");
+				myobj1.remove();
+				var myobj2 = document.getElementById("nn1");
+				myobj2.remove();
+				document.getElementById('s2').style.display='none';
+			};
+		}
+		else if(txt == "IT'S A DRAW"){
+			const target = document.getElementById('s2a2');
+			target.parentNode.insertBefore(middivcpy, target);
+			target.parentNode.insertBefore(middiv, target);
+			btn.onclick = function () {
+  				document.getElementById('s1').style.display='block';
+				var myobj = document.getElementById("mid");
+				myobj.remove();
+				var myobj1 = document.getElementById("midcpy");
+				myobj1.remove();
+				document.getElementById('s2').style.display='none';
+			};
+		}
+
+	}
+	/*function scoreup(){
+		s = document.getElementById("sco");
+		s.classList.add("sco1");
+	}*/
+	
+</script>
+</body>
+
+</html>
