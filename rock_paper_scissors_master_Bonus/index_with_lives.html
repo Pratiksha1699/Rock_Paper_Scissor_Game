@@ -1,0 +1,1384 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  
+<meta charset="UTF-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<!-- displays site properly based on user's device -->
+
+  
+<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/
+css?family=Georama|Merriweather+Sans">
+<title>Frontend Mentor | Rock, Paper, Scissors, Lizard, Spock</title>
+
+  
+<style>
+    
+.attribution { font-size: 11px; text-align: center; }
+    
+.attribution a { color: hsl(228, 45%, 44%); }
+  
+.modal{
+	display:none;
+	position:absolute;
+	z-index:7;
+	left:39%;
+	top:25%;
+	width:22%;
+	overflow:auto;
+	background-color:rgba(255,255,255,1);
+	color:black;
+}
+#idz{		display:none;
+		position:fixed;
+		z-index:7;
+		margin-top:0px;
+		left:0;
+		top:0;
+		width:100%;
+		height:100%;
+		overflow:auto;
+		background-color:rgb(0,0,0);
+		background-color:rgba(0,0,0,0.5);
+}
+#id1{
+	padding:2%;
+	border-radius:10px 10px 10px 10px;
+	font-size:20px;
+	font-family:Merriweather Sans;
+	font-weight:900;
+	color:rgb(27,43,76);
+}
+.whole{
+	display:none;
+}
+#s2{
+	display:none;
+	margin-top:5%;
+}
+.fi{
+	border-radius:15px 15px 15px 15px;
+	border:3px solid rgb(91,137,133);
+	width:45%;
+	margin-left:25%;
+	padding:20px;
+	padding-bottom:10px;
+	margin-top:3%;
+}
+#logo{
+	height:100px;
+}
+#scorebox{
+	float:right;
+	text-align:center;
+	background-color:white;
+	border-radius:10px 10px 10px 10px;
+	width:15%;
+	padding:3%;
+	font-weight:bold;
+	font-family:sans-serif;
+}
+#scoretxt{
+	color:rgb(76,94,194);
+	font-size:15px;
+}
+#sco{
+	color:rgb(81,77,100);
+	font-size:40px;
+}
+#s1{
+	background:url('images/bg-pentagon.svg');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:contain;
+	margin-top:7%;
+	width:50%;
+	height:300px;
+	position:relative;
+	//left:25%;
+}
+.circle{
+	width:12%;
+	height:18%;
+	padding:10px;
+	padding-bottom:3%;
+	
+}
+#bluec{
+	border-radius:50%;
+	background-color:rgb(224,224,224);
+	border:15px solid rgb(86,112,248);
+	//float:left;
+	//margin-left:10%;
+	//margin-top:-45px;
+	box-shadow:0px 7px rgb(42,70,195),rgb(186,191,213) 0px 7px inset;
+	padding-top:4%;
+	position:absolute;
+	display:inline-block;
+	top:15%;
+	left:62%;
+}
+#yellowc{
+	border-radius:50%;
+	background-color:rgb(222,222,222);
+	border:15px solid rgb(237,167,37);
+	//float:right;
+	//margin-top:-45px;
+	//margin-right:10%;
+	box-shadow:0px 7px rgb(196,112,26),rgb(185,190,210) 0px 7px inset;	
+	padding-top:4%;
+	position:absolute;
+	display:inline-block;
+	top:-20%;
+	left:40%;
+}
+#redc{
+	border-radius:50%;
+	background-color:rgb(223,223,223);
+	border:15px solid rgb(223,60,87);
+	//float:left;
+	//margin-left:35%;
+	//margin-top:10px;
+	box-shadow:0px 7px rgb(159,22,52),rgb(186,193,211) 0px 7px inset;
+	padding-top:4%;
+	position:absolute;
+	display:inline-block;
+	top:70%;
+	left:55%;
+}
+#purplec{
+	border-radius:50%;
+	background-color:rgb(222,222,222);
+	border:15px solid rgb(140,89,228);
+	//float:left;
+	//margin-top:-45px;
+	//margin-right:10%;
+	box-shadow:0px 7px rgb(95,55,170),rgb(185,190,210) 0px 7px inset;	
+	padding-top:4%;
+	position:absolute;
+	display:inline-block;
+	top:70%;
+	left:27%;
+}
+#cyanc{
+	border-radius:50%;
+	background-color:rgb(223,223,223);
+	border:15px solid rgb(79,190,209);
+	//float:left;
+	//margin-left:35%;
+	//margin-top:10px;
+	box-shadow:0px 7px rgb(45,143,172),rgb(186,193,211) 0px 7px inset;
+	padding-top:4%;
+	position:absolute;
+	display:inline-block;
+	top:15%;
+	left:18%;
+}
+#trimg{
+	margin-left:-10%;
+	width:20%;
+	//top:45%;
+	//left:40%;
+}
+#button1{
+	position:fixed;
+	background-color:rgb(27,43,76);
+	color:white;
+	border:1px solid white;
+	border-radius:10px 10px 10px 10px;
+	padding:10px;
+	width:8%;
+	margin-right:2%;
+	right:0;
+	bottom:2%;
+}
+#s21{
+	border-radius:50%;
+	background-color:rgb(222,222,222);
+	z-index:2;
+	border:20px solid rgb(237,167,37);
+	width:180px;
+	height:180px;
+	padding:10px;
+	box-shadow:0px 7px rgb(42,70,195);
+	float:left;
+}
+#s22{
+	border-radius:50%;
+	background-color:rgb(24,35,65);
+	z-index:2;
+	border:20px solid rgb(237,167,37);
+	width:180px;
+	height:180px;
+	padding:10px;
+	float:left;
+	margin-top:50px;
+}
+#s2a1{
+	width:320px;
+	height:320px;
+	border-radius:50%;
+	z-index:2;
+	display:inline-block;
+	position:relative;
+	color:white;
+	font-size:15px;
+	font-weight:900;
+	font-family:Georama;
+	letter-spacing:3px;
+	left:10%;
+}
+#s2b1{
+	width:300px;
+	height:300px;
+	z-index:2;
+}
+#s2c1{
+	width:280px;
+	height:280px;
+	z-index:2;
+}
+#s2a2{
+	width:320px;
+	height:320px;
+	border-radius:50%;
+	z-index:2;
+	display:inline-block;
+	position:relative;
+	color:white;
+	font-size:15px;
+	font-weight:900;
+	font-family:Georama;
+	letter-spacing:3px;
+	
+	right:10%;
+}
+#s2b2{
+	width:300px;
+	height:300px;
+	z-index:2;
+}
+#s2c2{
+	width:280px;
+	height:280px;
+	z-index:2;
+}
+.shifter{
+	animation:shift 1s 3s forwards;
+}
+.shifter2{
+	animation:shift1 1s 3s forwards;
+}
+}
+#p1{
+	margin-bottom:15%;
+}
+
+#btn1,#next,#hsbtn,#back{
+	color:rgb(27,43,76);
+}
+#next,#hsbtn,#back{
+	background-color:white;
+	border:0;
+	width:10%;
+	height:50%;
+	padding:1%;
+	margin:3%;
+	border-radius:5px 5px 5px 5px;
+}
+#btn1:hover{
+	cursor:pointer;
+	color:red;
+}
+#next:hover{
+	cursor:pointer;
+	color:red;
+}
+#hsbtn:hover{
+	cursor:pointer;
+	color:red;
+}
+#back:hover{
+	cursor:pointer;
+	color:red;
+}
+ul{
+	list-style:none;
+}
+ul > li{
+	padding:1%;
+	border:2px solid white;
+	width:30%;
+	margin:2%;
+	margin-left:0;
+	border-radius:30px;
+	background:linear-gradient(to left,white,rgb(27,43,76));
+	text-align:left;
+	
+}
+ul > li:hover{
+	font-size:120%;
+	color:red;
+	background:linear-gradient(to left,rgb(27,43,76),white);
+}
+#ranking{
+	border-radius:50%;
+	background-color:white;
+	color:rgb(27,43,76);
+	display:inline-block;
+	z-index:3;
+	height:10%;
+	width:5%;
+	text-align:center;
+}
+
+.glass{
+	z-index:9;
+	left:50%;
+	transform:translateX(-50%);
+	filter:invert(1);
+	display:none;
+	position:relative;
+	height:100vh;
+	width:100vw;
+	visibility:hidden;
+}
+.glass1{
+	animation:breaking 2s 3s forwards;
+}
+.glassy{
+	animation: diving 2s 3s forwards;
+	background-color:rgba(255,255,255,0.3);
+	position:absolute;
+	top:0px;
+	left:0px;
+	visibility:hidden;
+}
+.Astart{
+	animation: start 2s 3s forwards;
+	visibility:hidden;
+	color:rgb(27,43,76);
+	
+}
+.Astart:hover{
+	cursor:pointer;
+	color:red;
+}
+.highSco{
+	animation: slide 2s forwards;
+}
+.highSco:nth-child(1){
+    animation-delay: 0.1s;
+}
+.highSco:nth-child(2){
+    animation-delay: 0.5s;
+}
+.highSco:nth-child(3){
+    animation-delay: 1.0s;
+}
+.highSco:nth-child(4){
+    animation-delay: 1.5s;
+}
+.highSco:nth-child(5){
+    animation-delay: 2.0s;
+}
+@keyframes slide{
+	0%{
+		margin-left:0%;
+	}
+	100%{
+		margin-left:32%;
+	}
+}
+#hs{
+	color:white;
+	font-family:Georama;
+	display:none;
+}
+#h1style{
+	font-size:100px;
+}
+#h3style{
+	font-size:20px;
+	display:inline-block;
+	padding-right:1%;
+}
+#username{
+	width:30%;
+	height:40px;
+	border-radius:5px 5px 5px 5px;
+	border:0;
+}
+@keyframes diving{
+	0%{
+		transform:rotate3d(5,0,0,0deg) scale(0);
+		background-color:rgba(255,255,255,0.3);
+		visibility:visible;
+	}
+	20%{
+		transform:rotate3d(100,0,0,180deg) scale(0.2);	
+		background-color:rgba(255,255,255,0.3);
+		visibility:visible;
+	}
+	100%{
+		transform:rotate3d(0,0,0,360deg) scale(1);
+		background-color:rgba(255,255,255,0.2);
+		visibility:visible;
+	}
+
+}
+@keyframes breaking{
+	0%{
+		visibility:hidden;	
+	}
+	20%{
+		visibility:hidden;	
+	}
+	95%{
+		visibility:hidden;
+	}
+	100%{
+		visibility:visible;	
+	}
+
+}
+@keyframes start{
+	0%{
+		visibility:hidden;	
+	}
+	20%{
+		visibility:hidden;	
+	}
+	99%{
+		visibility:hidden;
+	}
+	100%{
+		visibility:visible;	
+	}
+
+}
+.loader{
+	animation:load 2s;
+}
+@keyframes load{
+	0%{
+		border:none;
+		background-color:rgb(60,66,98);
+		box-shadow:none;
+		margin-top:25%;
+		margin-left:15%;
+	}
+	100%{
+		border:none;
+		background-color:rgb(60,66,98);
+		box-shadow:none;
+		margin-top:25%;
+		margin-left:15%;
+	}
+}
+@keyframes shift{
+	0%{
+		left:10%;
+	}
+	100%{
+		left:0%;
+	}
+}
+@keyframes shift1{
+	0%{
+		right:10%;
+	}
+	100%{
+		right:0%;
+	}
+}
+miv{
+	height:22vh;
+	width:22vh;
+	top:35%;
+	left:25%;
+	background-color:#FFFFFF99;
+	position:absolute;
+	pointer-events:none;
+	animation: like 1s 3s linear forwards;
+	opacity:0;
+	border-radius:50%;
+	float:left;
+	z-index:-1;
+}
+niv{
+	height:50%;
+	width:50%;
+	top:25%;
+	left:25%;
+	background-color:#FFFFFF99;
+	position:absolute;
+	pointer-events:none;
+	animation: like 1s 3s linear forwards;
+	opacity:0;
+	border-radius:50%;
+	float:left;
+	z-index:-1;
+}
+piv{
+	height:50%;
+	width:50%;
+	top:25%;
+	left:25%;
+	background-color:#FFFFFF99;
+	position:absolute;
+	pointer-events:none;
+	animation: like 1s 3s linear forwards;
+	opacity:0;
+	border-radius:50%;
+	float:left;
+	z-index:-1;
+}
+@keyframes like{
+	100%{
+		transform:scale(2.5);
+		opacity:0.5;
+	}
+}
+#mid{
+	animation:box1 1s 4s linear forwards;
+	display:inline-block;
+	visibility:hidden;
+}
+.sco1{
+	animation:box1 2s 4s linear forwards;
+}
+@keyframes box1{
+	0%{
+		visibility:hiddden;
+	}
+	100%{
+		visibility:visible;
+	}
+}
+#heartbox{
+		top:2%;
+}
+.disappear{
+	animation: heartbreak 1s 2s linear forwards infinite;
+}
+@keyframes heartbreak{
+	0%{
+		opacity:0.5;
+		width:40px;
+	}
+	80%{
+		opacity:1;
+		width:50px;
+	}
+}
+
+@media screen and (max-width:425px){
+	.fi{
+		border-radius:5px 5px 5px 5px;
+		width:80%;
+		margin-left:5%;
+		border:2px solid rgb(91,137,133);
+	}
+	#logo{
+		width:25%;
+	}
+	#scorebox{
+		height:70px;
+    		width:25%;
+    		padding-top:5%;
+	}
+	#scoretxt{
+		font-size:70%;
+	}
+	#s1{
+		width:60%;
+		margin-top:15%;
+		height:350px;
+	}
+	.circle{
+		width:80px;
+		height:80px;
+		padding:5px;
+	}
+	#bluec{
+		border:15px solid rgb(86,112,248);
+		top:30%;
+		left:80%;
+	}
+	#yellowc{
+		border:15px solid rgb(237,167,37);
+		top:5%;
+		left:27%;
+	}
+	#redc{
+		border:15px solid rgb(223,60,87);
+		left:60%;
+	}
+	#purplec{
+		border:15px solid rgb(140,89,228);
+		top:70%;
+		left:0%;
+	}
+	#cyanc{
+		border:15px solid rgb(79,190,209);
+		top:30%;
+		left:-25%;
+	}
+	.circle > img{
+		width:50%;
+		margin:0 auto;
+		top:10%;
+		position:relative;
+	}
+	#trimg{
+		width:180px;
+		margin-left:-100px;
+		top:40%;
+	}
+	#button1{
+		width:30%;
+		margin-right:35%;
+		bottom:5%;
+	}
+	.modal{
+		left:10%;
+		top:15%;
+		width:80%;
+	}
+	#closebtn{
+		bottom:2%;
+    		position:absolute;
+    		left:45%;
+	}
+	#idz{
+		background-color:rgba(255,255,255,1);
+	}
+	#id1{
+		height:70%;
+		text-align:center;
+	}
+	#rule{
+		margin-top:30%;
+	}
+		
+	#s21{
+		width:90px;
+		height:90px;
+		border-width:10px;
+	}
+	#s22{
+		width:90px;
+		height:90px;
+		border-width:10px;
+		margin-top:0px;
+	}
+	#s2{
+		margin-top:25%;
+	}
+
+	#s2a1{
+		width:auto;
+		height:auto;
+		left:-25%;
+		
+	}
+	#s2b1{
+		width:auto;
+		height:auto;
+	}
+	#s2c1{
+		width:auto;
+		height:auto;
+	}
+	#s2a2{
+		width:auto;
+		height:auto;
+		right:-25%;
+		margin-top:-60%;
+    		top:-18px;
+	}
+	#s2b2{
+		width:auto;
+		height:auto;	
+	}
+	#s2c2{
+		width:auto;
+		height:auto;
+	}
+	#p1{
+		position:absolute;
+    		top:120%;
+    		font-size:80%;
+		width:105%;
+	}
+	#btn1{
+		font-size:100%;
+	}
+	#h1style{
+		font-size:20px;
+	}
+	#h3style{
+		font-size:18px;
+		display:inline-block;
+		padding-right:1%;
+	}
+	#username{
+		width:80%;
+		height:auto;
+		border-radius:5px 5px 5px 5px;
+		border:0;
+	}
+	#next,#hsbtn,#back{
+		width:20%;
+		height:30%;
+		
+	}
+	ul > li{
+		padding:1%;
+		border:2px solid white;
+		width:70%;
+		margin-left:0;
+		border-radius:30px;
+		background:linear-gradient(to left,white,rgb(27,43,76));
+		text-align:left;
+		}
+	@keyframes slide{
+		0%{
+			margin-left:0%;
+		}
+		100%{
+			margin-left:5%;
+		}
+	}
+	
+	miv{
+		height:10vh;
+		width:10vh;
+		top:23%;
+		left:23%;
+		background-color:#FFFFFF99;
+		position:absolute;
+		animation: like 1s 3s linear forwards;
+		opacity:0;
+		border-radius:50%;
+		float:left;
+		z-index:-1;
+	}
+	niv{
+		height:50%;
+		width:50%;
+		top:25%;
+		left:25%;
+		background-color:#FFFFFF99;
+		position:absolute;
+		animation: like 1s 3s linear forwards;
+		opacity:0;
+		border-radius:50%;
+		float:left;
+		z-index:-1;
+	}
+	piv{
+		height:50%;
+		width:50%;
+		top:25%;
+		left:25%;
+		background-color:#FFFFFF99;
+		position:absolute;
+		animation: like 1s 3s linear forwards;
+		opacity:0;
+		border-radius:50%;
+		float:left;
+		z-index:-1;
+	}
+	#mid{
+		display:block;
+		
+	}	
+	#heartbox{
+		width:50%;
+		top:25%;
+	}
+	.hearts{
+		width:16%;
+	}	
+	@keyframes load{
+	0%{
+		border:none;
+		background-color:rgb(60,66,98);
+		box-shadow:none;
+		margin-top:25%;
+	}
+	100%{
+		border:none;
+		background-color:rgb(60,66,98);
+		box-shadow:none;
+		margin-top:25%;
+	}
+}
+@media screen and (max-width:375px){
+	.circle{
+		width:60px;
+		height:60px;
+	}
+}	
+@media screen and (max-width:320px){
+	.circle{
+		width:50px;
+		height:50px;
+	}
+	#heartbox{
+		top:20%;
+	}
+}	
+
+}
+
+</style>
+
+</head>
+
+
+<body style="background-color:rgb(27,43,76);">
+
+
+  
+
+<div style="color:white;font-family:Georama;" id="welcome">
+	<center>
+	<h1 id="h1style">WELCOME TO GAME</h1>
+	<form action="javascript:void(0);" onsubmit="step1">
+	<h3 id="h3style">Type your Name: </h3>
+	<input type="text" name="username" id="username">
+	<button id="next" onclick="step1()">NEXT</button><br>
+	</form>
+	<button id="hsbtn" onclick="step5()">HIGH SCORES</button>
+	</center>
+
+</div>
+  
+<div class="whole" style="position:relative;">
+
+<div class="fi">
+<img id="logo" src="images/logo-bonus.svg">
+<div id="scorebox"><span id="scoretxt">SCORE</span><br><span id="sco" onchange="scoreup">0</span></div>
+</div>
+
+<div id="heartbox" style="float:right;position:fixed;right:1%;background-color:white;border-radius:5px;">
+	<img class="hearts" src="images/sparkling-heart.png">
+	<img class="hearts" src="images/sparkling-heart.png">
+	<img class="hearts" src="images/sparkling-heart.png">
+	<img class="hearts" src="images/sparkling-heart.png">
+	<img class="hearts" src="images/sparkling-heart.png">
+</div>
+
+<div>
+<center>
+<div id="s1">
+	
+	<div class="circle" id="yellowc" onclick="step2(2)"><img src="images/icon-scissors.svg" style=""></div>
+	<div class="circle" id="bluec" onclick="step2(1)"><img src="images/icon-paper.svg" style=""></div>
+	<div class="circle" id="redc" onclick="step2(3)"><img src="images/icon-rock.svg" style=""></div>
+	<div class="circle" id="purplec" onclick="step2(4)"><img src="images/icon-lizard.svg" style=""></div>
+	<div class="circle" id="cyanc" onclick="step2(5)"><img src="images/icon-spock.svg" style=""></div>
+
+
+
+</div>
+</center>
+
+
+<div id="s2">
+	<center id="cent">
+	<div id="s2a1"><div id="p1">YOU PICKED</div>
+		<div id="s2b1">
+			<div id="s2c1">
+				<div id="s21"><img id="s2img" src="images/icon-paper.svg" style="margin-top:15%;width:50%;z-index:2;">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="s2a2"><div id="p1">THE HOUSE PICKED</div>
+		<div id="s2b2">
+			<div id="s2c2">
+				<div id="s22"><img id="s2img2" src="images/icon-paper.svg" style="margin-top:15%;width:50%;z-index:2;">
+				</div>
+			</div>
+		</div>
+	</div>
+	</center>
+</div>
+
+<button id="button1" onclick="document.getElementById('idz').style.display='block';document.getElementById('id1').style.display='block'">RULES</button>
+<div id="idz">
+				<div id="id1" class="modal animate">RULES
+				<span id="closebtn" onclick="document.getElementById('id1').style.display='none';document.getElementById('idz').style.display='none';" title="Close" style="float:right;"><img src="images/icon-close.svg"></span>
+				<div id="rule"><img src="images/image-rules-bonus.svg" style="width:90%;"></div>
+			</div>
+		</div>
+</div>
+</div>
+<div id="hs"> 
+<center>
+	<h1>@@@HIGHSCORES@@@</h1>
+</center>	
+	<ul id="hsList"></ul>
+	<center><button id="back" onclick="document.getElementById('hs').style.display='none';document.getElementById('welcome').style.display='block';">BACK</button></center>
+
+</div>
+<div id="gb"><img src="images/glass.png" class="glass"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+	
+	var counter = 5;
+	var name = "";
+
+	function step1(){
+		document.getElementsByClassName('whole')[0].style.display='block';
+		document.getElementById('hs').style.display='none';
+		document.getElementById('welcome').style.display='none';
+		name = document.getElementById('username').value;
+		if(name==""){
+			name = "Anonymous";
+		}
+
+
+
+	}
+	function step2(num){
+		document.getElementById('s1').style.display='none';
+		document.getElementById('s2').style.display='block';
+		if(num==1){
+			pick1 = document.getElementById('s21');
+			pick2 = document.getElementById('s22');
+			pick1.style.backgroundColor="rgb(224,224,224)";
+			pick1.style.border="30px solid rgb(86,112,248)";
+			pick1.style.boxShadow="0px 7px rgb(42,70,195),rgb(186,191,213) 0px 7px inset";
+			pick1.style.marginTop = "10%";
+			s2a1.classList.add("shifter");
+			s2a2.classList.add("shifter2");
+			if(screen.width<=425){
+				pick1.style.border="10px solid rgb(86,112,248)";
+				pick1.style.boxShadow="0px 3px rgb(42,70,195),rgb(186,191,213) 0px 3px inset";
+				pick1.style.marginTop = "0%";
+				s2a1.classList.remove("shifter");
+				s2a2.classList.remove("shifter2");
+				
+			}
+			document.getElementById('s2img').src="images/icon-paper.svg";
+			document.getElementById('s2img2').src="";
+			s22.classList.add("loader");
+			step3(1);
+			
+		}
+		if(num==2){
+			pick1 = document.getElementById('s21');
+			pick2 = document.getElementById('s22');
+			pick1.style.backgroundColor="rgb(222,222,222)";
+			pick1.style.border="30px solid rgb(237,167,37)";
+			pick1.style.boxShadow="0px 7px rgb(196,112,26),rgb(185,190,210) 0px 7px inset";
+			pick1.style.marginTop = "10%";
+			s2a1.classList.add("shifter");
+			s2a2.classList.add("shifter2");
+			if(screen.width<=425){
+				pick1.style.border="10px solid rgb(237,167,37)";
+				pick1.style.boxShadow="0px 3px rgb(196,112,26),rgb(185,190,210) 0px 3px inset";
+				pick1.style.marginTop = "0%";
+			
+				s2a1.classList.remove("shifter");
+				s2a2.classList.remove("shifter2");
+				
+			}
+			document.getElementById('s2img').src="images/icon-scissors.svg";
+			document.getElementById('s2img2').src="";
+			s22.classList.add("loader");
+			step3(2);
+		}
+		if(num==3){
+			pick1 = document.getElementById('s21');
+			pick2 = document.getElementById('s22');
+			pick1.style.backgroundColor="rgb(223,223,223)";
+			pick1.style.border="30px solid rgb(223,60,87)";
+			pick1.style.boxShadow="0px 7px rgb(159,22,52),rgb(186,193,211) 0px 7px inset";
+			pick1.style.marginTop = "10%";
+			s2a1.classList.add("shifter");
+			s2a2.classList.add("shifter2");
+			if(screen.width<=425){
+				pick1.style.border="10px solid rgb(223,60,87)";
+				pick1.style.boxShadow="0px 3px rgb(159,22,52),rgb(186,193,211) 0px 3px inset";
+				pick1.style.marginTop = "0%";
+				s2a1.classList.remove("shifter");
+				s2a2.classList.remove("shifter2");
+			}
+			document.getElementById('s2img').src="images/icon-rock.svg";
+			document.getElementById('s2img2').src="";
+			s22.classList.add("loader");
+			step3(3);
+		}
+		if(num==4){
+			pick1 = document.getElementById('s21');
+			pick2 = document.getElementById('s22');
+			pick1.style.backgroundColor="rgb(223,223,223)";
+			pick1.style.border="30px solid rgb(140,89,228)";
+			pick1.style.boxShadow="0px 7px rgb(95,55,170),rgb(185,190,210) 0px 7px inset";
+			pick1.style.marginTop = "10%";
+			s2a1.classList.add("shifter");
+			s2a2.classList.add("shifter2");
+			if(screen.width<=425){
+				pick1.style.border="10px solid rgb(140,89,228)";
+				pick1.style.boxShadow="0px 3px rgb(95,55,170),rgb(185,190,210) 0px 3px inset";
+				pick1.style.marginTop = "0%";
+				s2a1.classList.remove("shifter");
+				s2a2.classList.remove("shifter2");
+			}
+			document.getElementById('s2img').src="images/icon-lizard.svg";
+			document.getElementById('s2img2').src="";
+			s22.classList.add("loader");
+			step3(4);
+		}
+		if(num==5){
+			pick1 = document.getElementById('s21');
+			pick2 = document.getElementById('s22');
+			pick1.style.backgroundColor="rgb(223,223,223)";
+			pick1.style.border="30px solid rgb(79,190,209)";
+			pick1.style.boxShadow="0px 7px rgb(45,143,172),rgb(186,193,211) 0px 7px inset";
+			pick1.style.marginTop = "10%";
+			s2a1.classList.add("shifter");
+			s2a2.classList.add("shifter2");
+			if(screen.width<=425){
+				pick1.style.border="10px solid rgb(79,190,209)";
+				pick1.style.boxShadow="0px 3px rgb(45,143,172),rgb(186,193,211) 0px 3px inset";
+				pick1.style.marginTop = "0%";
+				s2a1.classList.remove("shifter");
+				s2a2.classList.remove("shifter2");
+			}
+			document.getElementById('s2img').src="images/icon-spock.svg";
+			document.getElementById('s2img2').src="";
+			s22.classList.add("loader");
+			step3(5);
+		}
+	}
+
+
+
+	
+	function step3(n){
+		pick2 = document.getElementById('s22');
+		arr = ['paper','scissor','rock','lizard','spock'];
+		const housepick = arr[Math.floor(Math.random() * arr.length)];
+		var num = n;
+		if(housepick=='paper'){
+			pick2 = document.getElementById('s22');
+			pick2.style.backgroundColor="rgb(224,224,224)";
+			pick2.style.border="30px solid rgb(86,112,248)";
+			pick2.style.boxShadow="0px 7px rgb(42,70,195),rgb(186,191,213) 0px 7px inset";
+			pick2.style.marginTop="10%";
+			if(screen.width<=425){
+				pick2.style.border="10px solid rgb(86,112,248)";
+				pick2.style.boxShadow="0px 3px rgb(42,70,195),rgb(186,191,213) 0px 3px inset";
+				pick2.style.marginTop="0%";
+			}
+			document.getElementById('s2img2').src="images/icon-paper.svg";
+			step4(housepick,num);
+  				
+		}
+		if(housepick=='scissor'){
+			pick2 = document.getElementById('s22');
+			pick2.style.backgroundColor="rgb(222,222,222)";
+			pick2.style.border="30px solid rgb(237,167,37)";
+			pick2.style.boxShadow="0px 7px rgb(196,112,26),rgb(185,190,210) 0px 7px inset";
+			pick2.style.marginTop="10%";
+			if(screen.width<=425){
+				pick2.style.border="10px solid rgb(237,167,37)";
+				pick2.style.boxShadow="0px 3px rgb(196,112,26),rgb(185,190,210) 0px 3px inset";
+				pick2.style.marginTop="0%";
+			}
+			document.getElementById('s2img2').src="images/icon-scissors.svg";
+			step4(housepick,num);	
+		}
+		if(housepick=='rock'){
+			pick2 = document.getElementById('s22');
+			pick2.style.backgroundColor="rgb(223,223,223)";
+			pick2.style.border="30px solid rgb(223,60,87)";
+			pick2.style.boxShadow="0px 7px rgb(159,22,52),rgb(186,193,211) 0px 7px inset";
+			pick2.style.marginTop="10%";
+			if(screen.width<=425){
+				pick2.style.border="10px solid rgb(223,60,87)";
+				pick2.style.boxShadow="0px 3px rgb(159,22,52),rgb(186,193,211) 0px 3px inset";
+				pick2.style.marginTop="0%";
+			}
+			document.getElementById('s2img2').src="images/icon-rock.svg";
+			step4(housepick,num);
+		}
+		if(housepick=='lizard'){
+			pick2 = document.getElementById('s22');
+			pick2.style.backgroundColor="rgb(223,223,223)";
+			pick2.style.border="30px solid rgb(140,89,228)";
+			pick2.style.boxShadow="0px 7px rgb(95,55,170),rgb(185,190,210) 0px 7px inset";
+			pick2.style.marginTop="10%";
+			if(screen.width<=425){
+				pick2.style.border="10px solid rgb(140,89,228)";
+				pick2.style.boxShadow="0px 3px rgb(95,55,170),rgb(185,190,210) 0px 3px inset";
+				pick2.style.marginTop="0%";
+			}
+			document.getElementById('s2img2').src="images/icon-lizard.svg";
+			step4(housepick,num);
+		}
+		if(housepick=='spock'){
+			pick2 = document.getElementById('s22');
+			pick2.style.backgroundColor="rgb(223,223,223)";
+			pick2.style.border="30px solid rgb(79,190,209)";
+			pick2.style.boxShadow="0px 7px rgb(45,143,172),rgb(186,193,211) 0px 7px inset";
+			pick2.style.marginTop="10%";
+			if(screen.width<=425){
+				pick2.style.border="10px solid rgb(79,190,209)";
+				pick2.style.boxShadow="0px 3px rgb(45,143,172),rgb(186,193,211) 0px 3px inset";
+				pick2.style.marginTop="0%";
+			}
+			document.getElementById('s2img2').src="images/icon-spock.svg";
+			step4(housepick,num);
+		}
+	}
+	function step4(housepick,num){
+		if((housepick=='paper' && (num==2 || num==4)) || (housepick=='scissor' && (num==3 || num==5)) || (housepick=='rock' && (num==1 || num==5)) || (housepick=='lizard' && (num==2 || num==3)) || (housepick=='spock' && (num==1 || num==4))){
+			var txt = "YOU WIN";
+		}
+		else if((housepick=='paper' && num==1) || (housepick=='scissor' && num==2) || (housepick=='rock' && num==3) || (housepick=='lizard' && num==4) || (housepick=='spock' && num==5)){
+			var txt = "IT'S A DRAW";
+		}
+		else{
+			var txt = "YOU LOSE"
+		}
+		//alert(txt);
+		let te = document.createElement("t");
+		te.innerHTML = txt;
+		te.style.color = "white";
+		te.style.fontWeight = "bolder";
+		te.style.fontSize = "2rem";
+		te.style.display = "inline-block";
+		te.style.width = "100%";
+		te.style.fontFamily = "Georama";
+		te.style.paddingBottom = "12px";
+		
+		var btn = document.createElement("BUTTON");
+		btn.innerHTML = "PLAY AGAIN";
+		//btn.style.color = "rgb(27,43,76)";
+		btn.style.backgroundColor = "white";
+		btn.style.textDecoration = "none";
+		btn.style.border = "none";
+		btn.style.padding = "12px";
+		btn.style.borderRadius = "5px";
+		btn.style.display = "inline-block";
+		btn.style.width = "70%";
+		btn.style.height = "35px";
+		btn.style.fontFamily = "Georama";
+		if(screen.width<=425){
+			btn.style.width = "90%";
+		}
+
+		btn.setAttribute('id','btn1');
+
+		
+		var bre = document.createElement("BR");
+
+
+		var dd = document.getElementById('s21');
+		let nn = document.createElement("miv");
+		let mm = document.createElement("niv");
+		let pp = document.createElement("piv");
+
+		nn.setAttribute('id','nn1');
+
+		var middiv = document.createElement("DIV");
+		//middiv.style.display = "inline-block";
+		middiv.style.width = "20%";
+		middiv.appendChild(te);
+		middiv.appendChild(bre);
+		middiv.appendChild(btn);
+		middiv.style.position = "fixed";
+		middiv.style.left = "40%";
+		middiv.style.marginTop = "5%";
+		middiv.style.zIndex = "5";
+		middiv.setAttribute('id','mid');
+		if(screen.width<=425){
+			middiv.style.width = "60%";
+			middiv.style.marginTop = "30%";
+			//middiv.style.display = "block";
+			middiv.style.left = "20%";
+		}
+
+		var middivcpy = document.createElement("DIV1");
+		middivcpy.style.display = "inline-block";
+		if(screen.width<=425){
+			middivcpy.style.display = "block";
+		}
+		middivcpy.style.visibility = "hidden";
+		middivcpy.style.width = "20%";
+		middivcpy.setAttribute('id','midcpy');
+
+		if(txt == 'YOU WIN'){
+			
+			dd.appendChild(nn);
+			nn.appendChild(mm);
+			mm.appendChild(pp);
+			var score = document.getElementById('sco').textContent;
+			score = parseInt(score) + 1;
+			var sc = document.getElementById('sco');
+			
+
+			const target = document.getElementById('s2a2');
+			target.parentNode.insertBefore(middivcpy, target);
+			target.parentNode.insertBefore(middiv, target);
+			
+			setTimeout(function(){ document.getElementById('sco').innerHTML = score;},4000); 
+			btn.onclick = function () {
+  				document.getElementById('s1').style.display='block';
+				var myobj = document.getElementById("mid");
+				myobj.remove();
+				var myobj1 = document.getElementById("midcpy");
+				myobj1.remove();
+				var myobj2 = document.getElementById("nn1");
+				myobj2.remove();
+				document.getElementById('s2').style.display='none';
+			};
+		}
+		else if(txt == 'YOU LOSE'){
+			var dd = document.getElementById('s22');
+			
+			dd.appendChild(nn);
+			nn.appendChild(mm);
+			mm.appendChild(pp);
+			
+			const target = document.getElementById('s2a2');
+			target.parentNode.insertBefore(middivcpy, target);
+			target.parentNode.insertBefore(middiv, target);
+
+			var heartimg = document.getElementsByClassName('hearts')[0];
+			heartimg.classList.add("disappear");
+			setTimeout(function(){ heartimg.remove();},4000); 	
+			counter = counter - 1;
+			
+			
+			if(counter==0)
+			{
+				//var dis = "YOU HAVE NO LIVES REMAINING!! START A NEW GAME?";
+				var g = document.getElementsByClassName('glass')[0];
+				g.style.display = "block";
+
+				setTimeout(function(){ var ss = document.getElementById('s2');
+				ss.style.filter = "blur(3px)";},4000);
+				$('.whole').mousemove(function(e){
+					var movex = (e.pageX*-1/15);
+					var movey = (e.pageY*-1/15);
+					$('.whole').css('background-position', movex + 'px' + movey + 'px')
+				})
+
+				var glb = document.getElementById('gb');
+				glb.classList.add("glassy");
+				g.classList.add("glass1");
+
+				var y = document.getElementsByClassName('glassy')[0];
+				var b = document.createElement("BUTTON");
+				b.style.backgroundColor = "White";
+				b.style.width = "20%";
+				b.style.top = "50%";
+				b.style.height = "7%";
+				b.style.left = "40%";
+				b.style.border = "0";
+				b.style.zIndex = "10";
+				b.style.fontSize = "20px";
+				//b.style.color = "#123456";
+				b.style.borderRadius = "20px 20px 20px 20px";
+				b.style.fontFamily = "Georama";
+				b.style.position = "absolute";
+				b.innerHTML = "START AGAIN!!";
+				if(screen.width<=425){
+					b.style.left = "30%";
+					b.style.width = "40%";
+				}
+				b.classList.add("Astart");
+				y.appendChild(b);
+				b.onclick = function(){
+					document.getElementsByClassName('whole')[0].style.display='none';
+					//document.getElementById('hs').style.display='none';
+					document.getElementById('welcome').style.display='block';
+					document.getElementById('gb').style.display='none';
+					window.location.reload();
+				}
+				
+				var score = document.getElementById('sco').textContent;
+				score1 = parseInt(score);
+				const mrs = localStorage.getItem("mostRecentScore");
+				const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+				const max = 5;
+
+				const scores = {
+					score: score1,
+					name: name
+				};
+				highScores.push(scores);
+				highScores.sort((a,b) => b.score - a.score);
+				highScores.splice(5);
+
+				localStorage.setItem('highScores',JSON.stringify(highScores));
+				console.log(highScores);
+				}
+
+			btn.onclick = function () {
+  				document.getElementById('s1').style.display='block';
+				var myobj = document.getElementById("mid");
+				myobj.remove();
+				var myobj1 = document.getElementById("midcpy");
+				myobj1.remove();
+				var myobj2 = document.getElementById("nn1");
+				myobj2.remove();
+				document.getElementById('s2').style.display='none';
+			};
+		}
+		else if(txt == "IT'S A DRAW"){
+			const target = document.getElementById('s2a2');
+			target.parentNode.insertBefore(middivcpy, target);
+			target.parentNode.insertBefore(middiv, target);
+			btn.onclick = function () {
+  				document.getElementById('s1').style.display='block';
+				var myobj = document.getElementById("mid");
+				myobj.remove();
+				var myobj1 = document.getElementById("midcpy");
+				myobj1.remove();
+				document.getElementById('s2').style.display='none';
+			};
+		}
+
+	}
+	function step5(){
+		//document.getElementsByClassName('whole')[0].style.display='block';
+		document.getElementById('hs').style.display='block';
+		document.getElementById('welcome').style.display='none';
+		name = document.getElementById('username').value;
+
+		const hslist = document.getElementById('hsList');
+		const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+		
+		var rank = 1;
+		//const index = data.findIndex(item => item.id === 'iojiojoi');
+		hslist.innerHTML = highScores.map(scores => {
+			
+			return `<li class="highSco"><div id="ranking">${rank++}</div> . ${scores.name} - ${scores.score}</li>`;
+		}).join("");
+			
+		
+		
+		
+	}
+	
+</script>
+</body>
+
+</html>
